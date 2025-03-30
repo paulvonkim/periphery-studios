@@ -54,11 +54,11 @@ export default function Home() {
             New Collection
           </h1>
           <p className="text-md md:text-lg mb-8 max-w-2xl">
-            Explore our latest collection of premium jackets, tops, and pants
+            Clothing as a quiet rebellion. Crafted for those who see beyond.
           </p>
           <Link href="/store">
             <Button size="lg" className="bg-white text-black hover:bg-gray-200">
-              Shop Now
+              Unveil Collection
             </Button>
           </Link>
         </div>
