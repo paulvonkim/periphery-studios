@@ -1,6 +1,10 @@
+"use client";
+
+import { useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
+import { useCart } from "@/lib/cart-context";
 
 export default function CheckoutSuccessPage() {
   const { clearCart } = useCart();
@@ -8,6 +12,7 @@ export default function CheckoutSuccessPage() {
   useEffect(() => {
     clearCart();
   }, [clearCart]);
+
   return (
     <div className="container mx-auto px-4 py-16 text-center">
       <div className="max-w-md mx-auto">
