@@ -1,20 +1,13 @@
-"use client";
-
-import { useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
-import { useCart } from "@/lib/cart-context";
+import { CartClearer } from "./cart-clearer";
 
 export default function CheckoutSuccessPage() {
-  const { clearCart } = useCart();
-
-  useEffect(() => {
-    clearCart();
-  }, [clearCart]);
-
   return (
     <div className="container mx-auto px-4 py-16 text-center">
+      <CartClearer />
+
       <div className="max-w-md mx-auto">
         <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-6" />
         <h1 className="text-3xl font-bold mb-4">Order Confirmed</h1>

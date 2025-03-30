@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -15,7 +16,7 @@ type SearchResult = {
   description?: string;
 };
 
-export default function SearchPage() {
+function SearchResults() {
   const searchParams = useSearchParams();
   const query = searchParams.get("q") || "";
   const [results, setResults] = useState<SearchResult[]>([]);
@@ -142,5 +143,24 @@ export default function SearchPage() {
         </div>
       )}
     </div>
+  );
+}
+
+function SearchLoading() {
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-2xl font-bold mb-6">Search Results</h1>
+      <div className="flex justify-center items-center py-20">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-black"></div>
+      </div>
+    </div>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<SearchLoading />}>
+      <SearchResults />
+    </Suspense>
   );
 }
