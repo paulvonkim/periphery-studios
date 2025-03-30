@@ -42,8 +42,8 @@ export default function Header({ className }: { className?: string }) {
       }`}
     >
       <div className="container mx-auto px-2 py-2">
-        <div className="grid grid-cols-[auto_1fr_auto] items-center gap-2">
-          <div className="flex items-center">
+        <div className="relative flex justify-center">
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center">
             {/* Mobile Menu */}
             <div className="lg:hidden">
               <Sheet>
@@ -91,7 +91,7 @@ export default function Header({ className }: { className?: string }) {
           </div>
 
           {/* Logo - centered on mobile, left-aligned on desktop */}
-          <div className="flex justify-center">
+          <div className="z-10">
             <Link href="/" className="text-center">
               <h1 className="font-bold whitespace-nowrap text-2xl sm:text-3xl lg:text-4xl">
                 Periphery Studios
@@ -100,30 +100,32 @@ export default function Header({ className }: { className?: string }) {
           </div>
 
           {/* Search and Cart */}
-          <div className="flex items-center justify-end space-x-1 sm:space-x-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsSearchOpen(true)}
-              aria-label="Search"
-            >
-              <Search className="h-5 w-5" />
-            </Button>
-            <Link href="/cart">
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center">
+            <div className="flex items-center justify-end space-x-1 sm:space-x-2">
               <Button
                 variant="ghost"
                 size="icon"
-                className="relative"
-                aria-label="Shopping cart"
+                onClick={() => setIsSearchOpen(true)}
+                aria-label="Search"
               >
-                <ShoppingBag className="h-5 w-5" />
-                {items.length > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-black text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                    {items.length}
-                  </span>
-                )}
+                <Search className="h-5 w-5" />
               </Button>
-            </Link>
+              <Link href="/cart">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="relative"
+                  aria-label="Shopping cart"
+                >
+                  <ShoppingBag className="h-5 w-5" />
+                  {items.length > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-black text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                      {items.length}
+                    </span>
+                  )}
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
         {/* Search Overlay */}
