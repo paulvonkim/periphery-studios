@@ -3,13 +3,21 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getAllProducts } from "@/data/collections";
 
 export default function CollectionsPage() {
   const [isMounted, setIsMounted] = useState(false);
+  const searchParams = useSearchParams();
+  const tabParam = searchParams.get("tab");
+  const [activeTab, setActiveTab] = useState<string>("all");
 
-  // Map products to gallery items with span information
+  useEffect(() => {
+    if (tabParam) {
+      setActiveTab(tabParam);
+    }
+  }, [tabParam]);
   const products = getAllProducts();
 
   // Define span classes for each item
@@ -157,9 +165,12 @@ export default function CollectionsPage() {
       </h1>
 
       <Tabs
-        defaultValue="all"
+        value={activeTab} // Use the activeTab state variable instead
         className="mb-8 sm:mb-12"
-        onValueChange={handleTabChange}
+        onValueChange={(value) => {
+          setActiveTab(value);
+          handleTabChange(value);
+        }}
       >
         {/* Tabs with better visibility - fixed position with padding */}
         <div className="sticky top-16 z-10 bg-white pb-3 -mx-4 px-4 pt-2">
