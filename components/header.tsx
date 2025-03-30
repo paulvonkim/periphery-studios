@@ -42,7 +42,7 @@ export default function Header({ className }: { className?: string }) {
       }`}
     >
       <div className="container mx-auto px-2 py-2">
-        <div className="grid grid-cols-3 items-center">
+        <div className="grid grid-cols-[auto_1fr_auto] items-center gap-2">
           <div className="flex items-center">
             {/* Mobile Menu */}
             <div className="lg:hidden">
@@ -93,23 +93,29 @@ export default function Header({ className }: { className?: string }) {
           {/* Logo - centered on mobile, left-aligned on desktop */}
           <div className="flex justify-center">
             <Link href="/" className="text-center">
-              <h1 className="text-4xl font-bold whitespace-nowrap">
+              <h1 className="font-bold whitespace-nowrap text-2xl sm:text-3xl lg:text-4xl">
                 Periphery Studios
               </h1>
             </Link>
           </div>
 
           {/* Search and Cart */}
-          <div className="flex items-center justify-end">
+          <div className="flex items-center justify-end space-x-1 sm:space-x-2">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsSearchOpen(true)}
+              aria-label="Search"
             >
               <Search className="h-5 w-5" />
             </Button>
             <Link href="/cart">
-              <Button variant="ghost" size="icon" className="relative">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="relative"
+                aria-label="Shopping cart"
+              >
                 <ShoppingBag className="h-5 w-5" />
                 {items.length > 0 && (
                   <span className="absolute -top-1 -right-1 bg-black text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
