@@ -58,7 +58,7 @@ export default function Home() {
           </p>
           <Link href="/store">
             <Button size="lg" className="bg-white text-black hover:bg-gray-200">
-              Unveil Collection
+              Shop Now
             </Button>
           </Link>
         </div>
