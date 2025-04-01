@@ -63,8 +63,6 @@ export async function POST(request: Request) {
       ...messages,
     ];
 
-    console.log("Calling OpenAI API...");
-
     try {
       const completion = await openai.chat.completions.create({
         model: "gpt-4o",
@@ -74,8 +72,6 @@ export async function POST(request: Request) {
       });
 
       const assistantResponse = completion.choices[0].message.content;
-
-      console.log("API call successful");
 
       return NextResponse.json({
         message: assistantResponse,

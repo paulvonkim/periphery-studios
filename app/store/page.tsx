@@ -4,109 +4,82 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { getAllProducts } from "@/data/collections";
+import { getAllProducts, getProductById } from "@/data/collections";
 
-const productMapping = {
-  "osl2ber-dropped-waist-parka": "sp1",
-  "tactical-trousers": "sp2",
-  "vapor-longsleeve": "sp3",
-  "nighthawks-bomber-jacket": "sp4",
-  "osl2ber-trapper-hat": "sp5",
-  "nova-denim-jacket": "sp6",
-  "portrait-double-breasted-blazer": "sp7",
-  "anti-gaugin-faux-fur-blouson": "sp8",
+// Products to feature in the store (choose which ones to display)
+const featuredProductIds = [
+  "sp1", // SANS PAPIERS 01
+  "sp2", // SANS PAPIERS 02
+  "sp3", // SANS PAPIERS 03
+  "sp4", // SANS PAPIERS 04
+  "sp5", // SANS PAPIERS 05
+  "sp6", // SANS PAPIERS 06
+  "sp7", // SANS PAPIERS 07
+  "sp8", // SANS PAPIERS 08
+];
+
+// Category assignments for each product
+const productCategories = {
+  sp1: "jackets",
+  sp2: "tops",
+  sp3: "pants",
+  sp4: "jackets",
+  sp5: "tops",
+  sp6: "tops",
+  sp7: "jackets",
+  sp8: "pants",
 };
 
 export default function Store() {
   const [isMounted, setIsMounted] = useState(false);
+  const [storeProducts, setStoreProducts] = useState([]);
 
   useEffect(() => {
+    // Get all products
+    const allProducts = getAllProducts();
+
+    // Filter to only the featured ones and add categories
+    const productsForStore = featuredProductIds
+      .map((id) => {
+        const product = allProducts.find((p) => p.id === id);
+        if (!product) return null;
+
+        return {
+          ...product,
+          category: productCategories[id] || determineCategory(product),
+        };
+      })
+      .filter(Boolean); // Remove any null products
+
+    setStoreProducts(productsForStore);
     setIsMounted(true);
   }, []);
 
-  const collectionProducts = getAllProducts();
+  // Helper to determine category from product data
+  function determineCategory(product) {
+    const nameAndDesc = (
+      product.name +
+      " " +
+      (product.description || "")
+    ).toLowerCase();
 
-  const collectionProductsById = {};
-  collectionProducts.forEach((product) => {
-    collectionProductsById[product.id] = product;
-  });
-
-  const products = [
-    {
-      id: "osl2ber-dropped-waist-parka",
-      name:
-        collectionProductsById[productMapping["osl2ber-dropped-waist-parka"]]
-          ?.name || "OSL2BER DROPPED WAIST PARKA",
-      price: 1300,
-      category: "jackets",
-      image:
-        collectionProductsById[productMapping["osl2ber-dropped-waist-parka"]]
-          ?.images[0] || "/placeholder.svg?height=600&width=400",
-      collectionId: productMapping["osl2ber-dropped-waist-parka"],
-    },
-    {
-      id: "nighthawks-bomber-jacket",
-      name:
-        collectionProductsById[productMapping["nighthawks-bomber-jacket"]]
-          ?.name || "NIGHTHAWKS BOMBER JACKET",
-      price: 790,
-      category: "jackets",
-      image:
-        collectionProductsById[productMapping["nighthawks-bomber-jacket"]]
-          ?.images[0] || "/placeholder.svg?height=600&width=400",
-      collectionId: productMapping["nighthawks-bomber-jacket"],
-    },
-    {
-      id: "portrait-double-breasted-blazer",
-      name:
-        collectionProductsById[
-          productMapping["portrait-double-breasted-blazer"]
-        ]?.name || "PORTRAIT DOUBLE BREASTED BLAZER",
-      price: 890,
-      category: "tops",
-      image:
-        collectionProductsById[
-          productMapping["portrait-double-breasted-blazer"]
-        ]?.images[0] || "/placeholder.svg?height=600&width=400",
-      collectionId: productMapping["portrait-double-breasted-blazer"],
-    },
-    {
-      id: "vapor-longsleeve",
-      name:
-        collectionProductsById[productMapping["vapor-longsleeve"]]?.name ||
-        "VAPOR LONGSLEEVE",
-      price: 170,
-      category: "tops",
-      image:
-        collectionProductsById[productMapping["vapor-longsleeve"]]?.images[0] ||
-        "/placeholder.svg?height=600&width=400",
-      collectionId: productMapping["vapor-longsleeve"],
-    },
-    {
-      id: "tactical-trousers",
-      name:
-        collectionProductsById[productMapping["tactical-trousers"]]?.name ||
-        "TACTICAL TROUSERS",
-      price: 690,
-      category: "pants",
-      image:
-        collectionProductsById[productMapping["tactical-trousers"]]
-          ?.images[0] || "/placeholder.svg?height=600&width=400",
-      collectionId: productMapping["tactical-trousers"],
-    },
-    {
-      id: "anti-gaugin-faux-fur-blouson",
-      name:
-        collectionProductsById[productMapping["anti-gaugin-faux-fur-blouson"]]
-          ?.name || "ANTI-GAUGIN FAUX FUR BLOUSON",
-      price: 890,
-      category: "jackets",
-      image:
-        collectionProductsById[productMapping["anti-gaugin-faux-fur-blouson"]]
-          ?.images[0] || "/placeholder.svg?height=600&width=400",
-      collectionId: productMapping["anti-gaugin-faux-fur-blouson"],
-    },
-  ];
+    if (
+      nameAndDesc.includes("jacket") ||
+      nameAndDesc.includes("coat") ||
+      nameAndDesc.includes("parka") ||
+      nameAndDesc.includes("blazer") ||
+      nameAndDesc.includes("blouson")
+    ) {
+      return "jackets";
+    } else if (
+      nameAndDesc.includes("trouser") ||
+      nameAndDesc.includes("pant")
+    ) {
+      return "pants";
+    } else {
+      return "tops";
+    }
+  }
 
   if (!isMounted) {
     return (
@@ -137,7 +110,7 @@ export default function Store() {
 
         <TabsContent value="all" className="mt-6 sm:mt-8">
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 w-full">
-            {products.map((product) => (
+            {storeProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
@@ -145,7 +118,7 @@ export default function Store() {
 
         <TabsContent value="jackets" className="mt-6 sm:mt-8">
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 w-full">
-            {products
+            {storeProducts
               .filter((product) => product.category === "jackets")
               .map((product) => (
                 <ProductCard key={product.id} product={product} />
@@ -155,7 +128,7 @@ export default function Store() {
 
         <TabsContent value="tops" className="mt-6 sm:mt-8">
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 w-full">
-            {products
+            {storeProducts
               .filter((product) => product.category === "tops")
               .map((product) => (
                 <ProductCard key={product.id} product={product} />
@@ -165,7 +138,7 @@ export default function Store() {
 
         <TabsContent value="pants" className="mt-6 sm:mt-8">
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 w-full">
-            {products
+            {storeProducts
               .filter((product) => product.category === "pants")
               .map((product) => (
                 <ProductCard key={product.id} product={product} />
@@ -183,7 +156,7 @@ function ProductCard({ product }: { product: any }) {
       <div className="bg-white">
         <div className="relative aspect-[3/4] overflow-hidden">
           <Image
-            src={product.image || "/placeholder.svg"}
+            src={product.images?.[0] || "/placeholder.svg"}
             alt={product.name}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"

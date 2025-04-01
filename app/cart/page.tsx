@@ -13,22 +13,26 @@ export default function CartPage() {
   const [isPending, startTransition] = useTransition();
 
   const handleCheckout = () => {
-    console.log("Cart items:", items);
-
     const fixedItems = items.map((item) => ({
       ...item,
-      image: item.image?.startsWith("http")
-        ? item.image
-        : `${process.env.NEXT_PUBLIC_BASE_URL}${item.image}`,
+      image: item.image ? `${window.location.origin}${item.image}` : undefined,
     }));
 
     startTransition(() => {
-      const formData = new FormData();
-      formData.append("items", JSON.stringify(fixedItems));
-      checkoutAction(formData);
+      try {
+        const formData = new FormData();
+        formData.append("items", JSON.stringify(fixedItems));
+        checkoutAction(formData);
+      } catch (error) {
+        console.error("Error starting checkout:", error);
+
+        localStorage.setItem(
+          "checkoutError",
+          error instanceof Error ? error.message : String(error)
+        );
+      }
     });
   };
-
   if (items.length === 0) {
     return (
       <div className="container mx-auto px-4 py-8 sm:py-16 text-center">
