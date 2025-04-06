@@ -7,6 +7,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { Providers } from "./providers";
 import ChatWidget from "@/components/chat/chat-widget";
+import CookieConsent from "@/components/cookie-consent";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,6 +33,7 @@ export default function RootLayout({
               <Footer />
               <ChatWidget />
             </div>
+            <CookieConsent />
           </Providers>
         </ThemeProvider>
       </body>
