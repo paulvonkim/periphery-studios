@@ -37,6 +37,29 @@ export interface Collection {
   products: Product[];
 }
 
+// export function getSizeChartForProduct(product: Product): SizeChartItem[] {
+//   const isNumeric =
+//     product.sizes && product.sizes[0] && !isNaN(Number(product.sizes[0]));
+
+//   const nameDesc = (
+//     product.name +
+//     " " +
+//     (product.description || "")
+//   ).toLowerCase();
+
+//   if (nameDesc.includes("pant") || nameDesc.includes("trouser")) {
+//     return isNumeric ? sizeChartData["numeric-pants"] : sizeChartData["pants"];
+//   } else if (
+//     nameDesc.includes("jacket") ||
+//     nameDesc.includes("coat") ||
+//     nameDesc.includes("blazer")
+//   ) {
+//     return isNumeric ? sizeChartData["numeric"] : sizeChartData["jackets"];
+//   } else {
+//     return isNumeric ? sizeChartData["numeric"] : sizeChartData["tops"];
+//   }
+// }
+
 // Replace the placeholder collections object with this complete version
 export const collections: Record<string, Collection> = {
   "sans-papiers": {
@@ -59,6 +82,162 @@ export const collections: Record<string, Collection> = {
           "/images/collection/sans-papiers/sp1-3.jpg",
         ],
         collection: "sans-papiers",
+        sizes: ["46", "48", "50", "52", "54"],
+        features: [
+          "Oversized fit",
+          "Multiple front pockets",
+          "Custom hardware",
+          "Adjustable waist",
+        ],
+        materials: {
+          shell: "66% RECYCLED POLYESTER, 34% ORGANIC COTTON",
+          lining: "100% COTTON",
+        },
+        care: [
+          "Machine wash cold",
+          "Do not bleach",
+          "Tumble dry low",
+          "Iron on low heat",
+        ],
+        madeIn: "Portugal",
+        modelInfo: "Model is 188cm/6'2\" tall and wearing size 46",
+        relatedProducts: ["sp2", "sp3", "sp4"],
+        pairings: ["sp5", "sp7"],
+      },
+      {
+        id: "sp2",
+        name: "SANS PAPIERS 02",
+        price: 790,
+        description: "Structured overshirt with invisible pockets",
+        images: [
+          "/images/collection/sans-papiers/sp2.jpg",
+          "/images/collection/sans-papiers/sp2-2.jpg",
+          "/images/collection/sans-papiers/sp2-3.jpg",
+        ],
+        collection: "sans-papiers",
+        sizes: ["46", "48", "50", "52", "54"],
+        features: [
+          "Oversized fit",
+          "Multiple front pockets",
+          "Custom hardware",
+          "Adjustable waist",
+        ],
+        materials: {
+          shell: "66% RECYCLED POLYESTER, 34% ORGANIC COTTON",
+          lining: "100% COTTON",
+        },
+        care: [
+          "Machine wash cold",
+          "Do not bleach",
+          "Tumble dry low",
+          "Iron on low heat",
+        ],
+        madeIn: "Portugal",
+        modelInfo: "Model is 188cm/6'2\" tall and wearing size 46",
+        relatedProducts: ["sp1", "sp3", "sp5"],
+      },
+      {
+        id: "sp3",
+        name: "SANS PAPIERS 03",
+        price: 990,
+        description: "Relaxed fit trousers with adjustable waist",
+        images: [
+          "/images/collection/sans-papiers/sp3.jpg",
+          "/images/collection/sans-papiers/sp3-2.jpg",
+        ],
+        collection: "sans-papiers",
+        sizes: ["S", "M", "L", "XL"],
+        features: [
+          "Oversized fit",
+          "Multiple front pockets",
+          "Custom hardware",
+          "Adjustable waist",
+        ],
+        materials: {
+          shell: "66% RECYCLED POLYESTER, 34% ORGANIC COTTON",
+          lining: "100% COTTON",
+        },
+        care: [
+          "Machine wash cold",
+          "Do not bleach",
+          "Tumble dry low",
+          "Iron on low heat",
+        ],
+        madeIn: "Portugal",
+        modelInfo: "Model is 188cm/6'2\" tall and wearing size 46",
+        relatedProducts: ["sp1", "sp2", "sp4"],
+      },
+      {
+        id: "sp4",
+        name: "SANS PAPIERS 04",
+        price: 850,
+        description: "Utilitarian coat with detachable elements",
+        images: [
+          "/images/collection/sans-papiers/sp4.jpg",
+          "/images/collection/sans-papiers/sp4-2.jpg",
+          "/images/collection/sans-papiers/sp4-3.jpg",
+        ],
+        collection: "sans-papiers",
+        sizes: ["46", "48", "50", "52", "54"],
+        features: [
+          "Oversized fit",
+          "Multiple front pockets",
+          "Custom hardware",
+          "Adjustable waist",
+        ],
+        materials: {
+          shell: "66% RECYCLED POLYESTER, 34% ORGANIC COTTON",
+          lining: "100% COTTON",
+        },
+        care: [
+          "Machine wash cold",
+          "Do not bleach",
+          "Tumble dry low",
+          "Iron on low heat",
+        ],
+        madeIn: "Portugal",
+        modelInfo: "Model is 188cm/6'2\" tall and wearing size 46",
+        relatedProducts: ["sp1", "sp3", "sp5"],
+      },
+      {
+        id: "sp5",
+        name: "SANS PAPIERS 05",
+        price: 920,
+        description: "Loose fit vest with multiple pockets",
+        images: [
+          "/images/collection/sans-papiers/sp5.jpg",
+          "/images/collection/sans-papiers/sp5-2.jpg",
+        ],
+        collection: "sans-papiers",
+        sizes: ["46", "48", "50", "52", "54"],
+        features: [
+          "Regular fit",
+          "Four utility pockets",
+          "Button closure",
+          "Reinforced shoulders",
+          "Adjustable cuffs",
+        ],
+        materials: {
+          shell: "78% ORGANIC COTTON, 22% LINEN",
+          lining: "100% COTTON",
+        },
+        care: [
+          "Machine wash cold",
+          "Do not bleach",
+          "Hang to dry",
+          "Iron on medium heat",
+        ],
+        madeIn: "Portugal",
+        modelInfo: "Model is 182cm/6'0\" tall and wearing size 46",
+        relatedProducts: ["sp6", "sp7", "sp8"],
+      },
+      {
+        id: "sp6",
+        name: "SANS PAPIERS 06",
+        price: 880,
+        description: "Oversized shirt with statement pockets",
+        images: ["/images/collection/sans-papiers/sp6.jpg"],
+        collection: "sans-papiers",
         sizes: ["S", "M", "L"],
         features: [
           "Oversized fit",
@@ -77,76 +256,7 @@ export const collections: Record<string, Collection> = {
           "Iron on low heat",
         ],
         madeIn: "Portugal",
-        relatedProducts: ["sp2", "sp3", "sp4"],
-        pairings: ["sp5", "sp7"],
-      },
-      {
-        id: "sp2",
-        name: "SANS PAPIERS 02",
-        price: 790,
-        description: "Structured overshirt with utility pockets",
-        images: [
-          "/images/collection/sans-papiers/sp2.jpg",
-          "/images/collection/sans-papiers/sp2-2.jpg",
-          "/images/collection/sans-papiers/sp2-3.jpg",
-        ],
-        collection: "sans-papiers",
-        sizes: ["S", "M", "L"],
-        relatedProducts: ["sp1", "sp3", "sp5"],
-      },
-      {
-        id: "sp3",
-        name: "SANS PAPIERS 03",
-        price: 990,
-        description: "Relaxed fit trousers with adjustable waist",
-        images: [
-          "/images/collection/sans-papiers/sp3.jpg",
-          "/images/collection/sans-papiers/sp3-2.jpg",
-        ],
-        collection: "sans-papiers",
-        sizes: ["S", "M", "L"],
-        relatedProducts: ["sp1", "sp2", "sp4"],
-      },
-      {
-        id: "sp4",
-        name: "SANS PAPIERS 04",
-        price: 850,
-        description: "Utilitarian coat with detachable elements",
-        images: [
-          "/images/collection/sans-papiers/sp4.jpg",
-          "/images/collection/sans-papiers/sp4-2.jpg",
-          "/images/collection/sans-papiers/sp4-3.jpg",
-        ],
-        collection: "sans-papiers",
-        sizes: ["S", "M", "L"],
-        relatedProducts: ["sp1", "sp3", "sp5"],
-      },
-      {
-        id: "sp5",
-        name: "SANS PAPIERS 05",
-        price: 920,
-        description: "Loose fit vest with multiple pockets",
-        images: [
-          "/images/collection/sans-papiers/sp5.jpg",
-          "/images/collection/sans-papiers/sp5-2.jpg",
-          "/images/collection/sans-papiers/sp5-3.jpg",
-        ],
-        collection: "sans-papiers",
-        sizes: ["S", "M", "L"],
-        relatedProducts: ["sp6", "sp7", "sp8"],
-      },
-      {
-        id: "sp6",
-        name: "SANS PAPIERS 06",
-        price: 880,
-        description: "Oversized shirt with statement pockets",
-        images: [
-          "/images/collection/sans-papiers/sp6.jpg",
-          "/images/collection/sans-papiers/sp6-2.jpg",
-          "/images/collection/sans-papiers/sp6-3.jpg",
-        ],
-        collection: "sans-papiers",
-        sizes: ["S", "M", "L"],
+        modelInfo: "Model is 188cm/6'2\" tall and wearing size M",
         relatedProducts: ["sp5", "sp7", "sp8"],
       },
       {
@@ -160,21 +270,52 @@ export const collections: Record<string, Collection> = {
           "/images/collection/sans-papiers/sp7-3.jpg",
         ],
         collection: "sans-papiers",
-        sizes: ["S", "M", "L"],
-        relatedProducts: ["sp6", "sp8", "sp9"],
+        sizes: ["46", "48", "50", "52", "54"],
+        features: [
+          "Oversized fit",
+          "Multiple front pockets",
+          "Custom hardware",
+          "Adjustable waist",
+        ],
+        materials: {
+          shell: "66% RECYCLED POLYESTER, 34% ORGANIC COTTON",
+          lining: "100% COTTON",
+        },
+        care: [
+          "Machine wash cold",
+          "Do not bleach",
+          "Tumble dry low",
+          "Iron on low heat",
+        ],
+        madeIn: "Portugal",
+        modelInfo: "Model is 188cm/6'2\" tall and wearing size 46",
+        relatedProducts: ["sp1", "sp3", "sp5"],
       },
       {
         id: "sp8",
         name: "SANS PAPIERS 08",
         price: 870,
-        description: "Relaxed fit pants with cargo pockets",
+        description: "Relaxed fit pants with pleated details",
         images: [
           "/images/collection/sans-papiers/sp8.jpg",
           "/images/collection/sans-papiers/sp8-2.jpg",
           "/images/collection/sans-papiers/sp8-3.jpg",
         ],
         collection: "sans-papiers",
-        sizes: ["S", "M", "L"],
+        sizes: ["S", "M", "L", "XL"],
+        features: ["Oversized fit", "Custom hardware", "Adjustable waist"],
+        materials: {
+          shell: "66% RECYCLED POLYESTER, 34% ORGANIC COTTON",
+          lining: "100% COTTON",
+        },
+        care: [
+          "Machine wash cold",
+          "Do not bleach",
+          "Tumble dry low",
+          "Iron on low heat",
+        ],
+        madeIn: "Portugal",
+        modelInfo: "Model is 188cm/6'2\" tall and wearing size 46",
         relatedProducts: ["sp7", "sp9", "sp10"],
       },
       {
@@ -182,13 +323,27 @@ export const collections: Record<string, Collection> = {
         name: "SANS PAPIERS 09",
         price: 910,
         description: "Oversized parka with adjustable hood",
-        images: [
-          "/images/collection/sans-papiers/sp9.jpg",
-          "/images/collection/sans-papiers/sp9-2.jpg",
-          "/images/collection/sans-papiers/sp9-3.jpg",
-        ],
+        images: ["/images/collection/sans-papiers/sp9.jpg"],
         collection: "sans-papiers",
         sizes: ["S", "M", "L"],
+        features: [
+          "Oversized fit",
+          "Multiple front pockets",
+          "Custom hardware",
+          "Adjustable waist",
+        ],
+        materials: {
+          shell: "66% RECYCLED POLYESTER, 34% ORGANIC COTTON",
+          lining: "100% COTTON",
+        },
+        care: [
+          "Machine wash cold",
+          "Do not bleach",
+          "Tumble dry low",
+          "Iron on low heat",
+        ],
+        madeIn: "Portugal",
+        modelInfo: "Model is 188cm/6'2\" tall and wearing size M",
         relatedProducts: ["sp8", "sp10", "sp1"],
       },
       {
@@ -196,13 +351,27 @@ export const collections: Record<string, Collection> = {
         name: "SANS PAPIERS 10",
         price: 950,
         description: "Structured jacket with contrast details",
-        images: [
-          "/images/collection/sans-papiers/sp10.jpg",
-          "/images/collection/sans-papiers/sp10-2.jpg",
-          "/images/collection/sans-papiers/sp10-3.jpg",
-        ],
+        images: ["/images/collection/sans-papiers/sp10.jpg"],
         collection: "sans-papiers",
         sizes: ["S", "M", "L"],
+        features: [
+          "Oversized fit",
+          "Multiple front pockets",
+          "Custom hardware",
+          "Adjustable waist",
+        ],
+        materials: {
+          shell: "66% RECYCLED POLYESTER, 34% ORGANIC COTTON",
+          lining: "100% COTTON",
+        },
+        care: [
+          "Machine wash cold",
+          "Do not bleach",
+          "Tumble dry low",
+          "Iron on low heat",
+        ],
+        madeIn: "Portugal",
+        modelInfo: "Model is 188cm/6'2\" tall and wearing size M",
         relatedProducts: ["sp9", "sp1", "sp2"],
       },
     ],
@@ -331,22 +500,16 @@ export function getCollectionBySlug(slug: string): Collection | undefined {
   return collections[slug];
 }
 
-// Fix getAllProducts to filter out any undefined entries
 export function getAllProducts(): Product[] {
-  // Defensive approach - filter out any undefined or invalid products
   return Object.values(collections).flatMap((collection) =>
-    // Ensure collection.products exists and filter out any invalid entries
     Array.isArray(collection?.products)
       ? collection.products.filter(Boolean)
       : []
   );
 }
 
-// Fix getProductById to be more defensive
 export function getProductById(id: string): Product | undefined {
-  // Safety check
   if (!id) return undefined;
-
   try {
     return getAllProducts().find((product) => product?.id === id);
   } catch (error) {
@@ -355,21 +518,11 @@ export function getProductById(id: string): Product | undefined {
   }
 }
 
-// Fix getEnhancedProduct with better error handling
 export function getEnhancedProduct(id: string): Product | undefined {
   try {
-    // Safety check
-    if (!id) {
-      return undefined;
-    }
-
+    if (!id) return undefined;
     const product = getProductById(id);
-
-    if (!product) {
-      return undefined;
-    }
-
-    // Add default sizes if not already present
+    if (!product) return undefined;
     return {
       ...product,
       sizes: product.sizes || ["S", "M", "L"],
@@ -379,3 +532,175 @@ export function getEnhancedProduct(id: string): Product | undefined {
     return undefined;
   }
 }
+
+export function getSizeChartForProduct(product: Product): SizeChartItem[] {
+  // Check if product has sizes
+  if (!product.sizes || product.sizes.length === 0) {
+    return [];
+  }
+
+  // Check if the sizes are numeric (European sizing)
+  const isNumeric = !isNaN(Number(product.sizes[0]));
+
+  // Determine product type based on name or description
+  const nameDesc = (
+    product.name +
+    " " +
+    (product.description || "")
+  ).toLowerCase();
+
+  if (nameDesc.includes("pant") || nameDesc.includes("trouser")) {
+    return isNumeric ? sizeChartData["numeric-pants"] : sizeChartData["pants"];
+  } else if (
+    nameDesc.includes("jacket") ||
+    nameDesc.includes("coat") ||
+    nameDesc.includes("blazer")
+  ) {
+    return isNumeric ? sizeChartData["numeric"] : sizeChartData["jackets"];
+  } else {
+    return isNumeric ? sizeChartData["numeric"] : sizeChartData["tops"];
+  }
+}
+// Add this size chart data to your collections.ts file
+export const sizeChartData: Record<string, SizeChartItem[]> = {
+  tops: [
+    {
+      size: "S",
+      chestWidth: '53cm / 20.9"',
+      frontLength: '68cm / 26.8"',
+      sleeveLength: '64cm / 25.2"',
+    },
+    {
+      size: "M",
+      chestWidth: '56cm / 22"',
+      frontLength: '70cm / 27.6"',
+      sleeveLength: '65cm / 25.6"',
+    },
+    {
+      size: "L",
+      chestWidth: '59cm / 23.2"',
+      frontLength: '72cm / 28.3"',
+      sleeveLength: '66cm / 26"',
+    },
+    {
+      size: "XL",
+      chestWidth: '62cm / 24.4"',
+      frontLength: '74cm / 29.1"',
+      sleeveLength: '67cm / 26.4"',
+    },
+  ],
+
+  jackets: [
+    {
+      size: "S",
+      chestWidth: '57cm / 22.4"',
+      frontLength: '72cm / 28.3"',
+      sleeveLength: '66cm / 26"',
+    },
+    {
+      size: "M",
+      chestWidth: '60cm / 23.6"',
+      frontLength: '74cm / 29.1"',
+      sleeveLength: '67cm / 26.4"',
+    },
+    {
+      size: "L",
+      chestWidth: '63cm / 24.8"',
+      frontLength: '76cm / 29.9"',
+      sleeveLength: '68cm / 26.8"',
+    },
+    {
+      size: "XL",
+      chestWidth: '66cm / 26"',
+      frontLength: '78cm / 30.7"',
+      sleeveLength: '69cm / 27.2"',
+    },
+  ],
+
+  numeric: [
+    {
+      size: "46",
+      chestWidth: '55cm / 21.7"',
+      frontLength: '70cm / 27.6"',
+      sleeveLength: '65cm / 25.6"',
+    },
+    {
+      size: "48",
+      chestWidth: '57cm / 22.4"',
+      frontLength: '71cm / 28"',
+      sleeveLength: '66cm / 26"',
+    },
+    {
+      size: "50",
+      chestWidth: '59cm / 23.2"',
+      frontLength: '72cm / 28.3"',
+      sleeveLength: '67cm / 26.4"',
+    },
+    {
+      size: "52",
+      chestWidth: '61cm / 24"',
+      frontLength: '73cm / 28.7"',
+      sleeveLength: '68cm / 26.8"',
+    },
+    {
+      size: "54",
+      chestWidth: '63cm / 24.8"',
+      frontLength: '74cm / 29.1"',
+      sleeveLength: '69cm / 27.2"',
+    },
+  ],
+
+  pants: [
+    {
+      size: "S",
+      chestWidth: 'Waist: 76cm / 29.9"',
+      frontLength: 'Outseam: 102cm / 40.2"',
+      sleeveLength: 'Inseam: 74cm / 29.1"',
+    },
+    {
+      size: "M",
+      chestWidth: 'Waist: 81cm / 31.9"',
+      frontLength: 'Outseam: 103cm / 40.6"',
+      sleeveLength: 'Inseam: 75cm / 29.5"',
+    },
+    {
+      size: "L",
+      chestWidth: 'Waist: 86cm / 33.9"',
+      frontLength: 'Outseam: 104cm / 41"',
+      sleeveLength: 'Inseam: 76cm / 29.9"',
+    },
+    {
+      size: "XL",
+      chestWidth: 'Waist: 91cm / 35.8"',
+      frontLength: 'Outseam: 105cm / 41.3"',
+      sleeveLength: 'Inseam: 77cm / 30.3"',
+    },
+  ],
+
+  "numeric-pants": [
+    {
+      size: "46",
+      chestWidth: 'Waist: 76cm / 29.9"',
+      frontLength: 'Outseam: 102cm / 40.2"',
+      sleeveLength: 'Inseam: 74cm / 29.1"',
+    },
+    {
+      size: "48",
+      chestWidth: 'Waist: 81cm / 31.9"',
+      frontLength: 'Outseam: 103cm / 40.6"',
+      sleeveLength: 'Inseam: 75cm / 29.5"',
+    },
+    {
+      size: "50",
+      chestWidth: 'Waist: 86cm / 33.9"',
+      frontLength: 'Outseam: 104cm / 41"',
+      sleeveLength: 'Inseam: 76cm / 29.9"',
+    },
+    {
+      size: "52",
+      chestWidth: 'Waist: 91cm / 35.8"',
+      frontLength: 'Outseam: 105cm / 41.3"',
+      sleeveLength: 'Inseam: 77cm / 30.3"',
+    },
+  ],
+};

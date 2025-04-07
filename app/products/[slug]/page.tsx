@@ -11,6 +11,7 @@ import SizeSelector from "@/components/size-selector";
 import ProductGallery from "@/components/product-gallery";
 import RelatedProducts from "@/components/related-products";
 import { getEnhancedProduct, getProductById } from "@/data/collections";
+import { ProductSizeChart } from "@/components/product/size-chart";
 
 export default function ProductPage() {
   const params = useParams();
@@ -159,9 +160,7 @@ export default function ProductPage() {
                       </table>
                     </div>
                   ) : (
-                    <p className="text-sm text-gray-500">
-                      Sizing chart not available for this product.
-                    </p>
+                    <ProductSizeChart product={product} />
                   )}
                 </TabsContent>
 
